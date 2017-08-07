@@ -1,0 +1,12 @@
+<resources>
+
+    <style name="AuthTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/lightsalmon</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="android:windowBackground">@color/colorAccent</item>
+    </style>
+
+</resources>

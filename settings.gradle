@@ -1,0 +1,18 @@
+if (!isModule.toBoolean()) {
+    include ':app'
+}
+if (!authRelease.toBoolean()) {
+    include ':auth'
+}
+if (!coreRelease.toBoolean()) {
+    include ':core'
+}
+if (!dbRelease.toBoolean()) {
+    include ':db'
+}
+if (!httpRelease.toBoolean()) {
+    include ':http'
+}
+if (!basicRelease.toBoolean()) {
+    include ':basic'
+}

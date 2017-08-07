@@ -1,0 +1,128 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+def projectName = project.getName();
+
+android {
+    compileSdkVersion Integer.parseInt(COMPILE_SDK_VERSION)
+    buildToolsVersion BUILDTOOLS_VERSION
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.javaVersion
+        targetCompatibility rootProject.ext.javaVersion
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(CORE_VERSION)
+        versionName CORE_VERSION_NAME
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: projectName]
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+
+    debugCompile "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanaryVersion"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanaryVersion"
+    testCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanaryVersion"
+    compile "com.android.support:appcompat-v7:${SUPPORT_LIB_VERSION}"
+    compile "com.android.support:recyclerview-v7:${SUPPORT_LIB_VERSION}"
+    compile "com.android.support:cardview-v7:${SUPPORT_LIB_VERSION}"
+    compile "com.android.support:design:${SUPPORT_LIB_VERSION}"
+    compile "com.android.support.constraint:constraint-layout:${CONSTRAINT_LAYOUT}"
+    compile "com.android.support:multidex:$rootProject.multidexVersion"
+
+    compile "com.alibaba:arouter-api:$rootProject.arouterApiVersion"
+    annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerCompilerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerAndroidProcessorVersion"
+
+    compile "com.orhanobut:logger:$rootProject.loggerVersion"
+    compile "com.google.dagger:dagger:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerCompilerVersion"
+    compile "com.google.dagger:dagger-android:$rootProject.daggerAndroidVersion"
+    compile "com.google.dagger:dagger-android-support:$rootProject.daggerAndroidSupportVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerAndroidProcessorVersion"
+
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid2Version"
+    compile "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxbinding2Version"
+    compile "com.jakewharton.rxbinding2:rxbinding-support-v4:$rootProject.rxbinding2SupportV4Version"
+    compile "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rootProject.rxbinding2AppcompatV7Version"
+    compile "com.jakewharton.rxbinding2:rxbinding-design:$rootProject.rxbinding2DesignVersion"
+    compile "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$rootProject.rxbinding2recyclerviewV7Version"
+    compile "com.jakewharton.rxrelay2:rxrelay:$rootProject.rxrelay2Version"
+    compile "com.trello.rxlifecycle2:rxlifecycle:$rootProject.rxlifecycle2Version"
+    compile "com.trello.rxlifecycle2:rxlifecycle-android:$rootProject.rxlifecycle2AndroidVersion"
+    compile "com.trello.rxlifecycle2:rxlifecycle-components:$rootProject.rxlifecycle2ComponentsVersion"
+    compile "com.tbruyelle.rxpermissions2:rxpermissions:$rootProject.rxpermissions2Version"
+
+    compile "com.blankj:utilcode:$rootProject.utilcodeVersion"
+
+    compile "me.yokeyword:fragmentation:$rootProject.fragmentationVersion"
+    compile "me.yokeyword:fragmentation-swipeback:$rootProject.fragmentationSwipebackVersion"
+
+
+    if (httpRelease.toBoolean()) {
+        compile "com.gavel:http:$HTTP_VERSION_NAME"
+    } else {
+        compile project(':http')
+    }
+    if (dbRelease.toBoolean()) {
+        compile "com.gavel:db:$DB_VERSION_NAME"
+    } else {
+        compile project(':db')
+    }
+    if (basicRelease.toBoolean()) {
+        compile "com.gavel:basic:$BASIC_VERSION_NAME"
+    } else {
+        compile project(':basic')
+    }
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: MAVEN_REPO_URL) {
+                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+            }
+            pom.project {
+                version CORE_VERSION_NAME
+                artifactId projectName
+                groupId GROUP_ID
+                packaging TYPE
+                description DESCRIPTION
+            }
+        }
+    }
+}
+
+artifacts {
+    archives file(projectName + ".aar")
+}

@@ -1,0 +1,83 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 顶部按钮栏高度 -->
+    <dimen name="pickerview_topbar_height">44dp</dimen>
+    <!-- 顶部按钮paddingLeft -->
+    <dimen name="pickerview_topbar_paddingleft">15dp</dimen>
+    <!-- 顶部按钮paddingRight -->
+    <dimen name="pickerview_topbar_paddingright">30dp</dimen>
+    <!-- 顶部按钮文字大小 -->
+    <dimen name="pickerview_topbar_btn_textsize">20sp</dimen>
+    <dimen name="pickerview_topbar_title_textsize">21sp</dimen>
+    <!-- 选项文字大小 需要配合 bools.xml 的 pickerview_customTextSize 为 true 才有效果-->
+    <dimen name="pickerview_textsize">20sp</dimen>
+
+    <dimen name="space_0.5">0.5dip</dimen>
+    <dimen name="space_1">1.0dip</dimen>
+    <dimen name="space_2">2.0dip</dimen>
+    <dimen name="space_3">3.0dip</dimen>
+    <dimen name="space_4">4.0dip</dimen>
+    <dimen name="space_5">5.0dip</dimen>
+    <dimen name="space_6">6.0dip</dimen>
+    <dimen name="space_7">7.0dip</dimen>
+    <dimen name="space_8">8.0dip</dimen>
+    <dimen name="space_9">9.0dip</dimen>
+    <dimen name="space_10">10.0dip</dimen>
+    <dimen name="space_11">11.0dip</dimen>
+    <dimen name="space_12">12.0dip</dimen>
+    <dimen name="space_13">13.0dip</dimen>
+    <dimen name="space_14">14.0dip</dimen>
+    <dimen name="space_15">15.0dip</dimen>
+    <dimen name="space_16">16.0dip</dimen>
+    <dimen name="space_17">17.0dip</dimen>
+    <dimen name="space_18">18.0dip</dimen>
+    <dimen name="space_19">19.0dip</dimen>
+    <dimen name="space_20">20.0dip</dimen>
+    <dimen name="space_22">22.0dip</dimen>
+    <dimen name="space_24">24.0dip</dimen>
+    <dimen name="space_25">25.0dip</dimen>
+    <dimen name="space_30">30.0dip</dimen>
+    <dimen name="space_31">31.0dip</dimen>
+    <dimen name="space_32">32.0dip</dimen>
+    <dimen name="space_33">33.0dip</dimen>
+    <dimen name="space_34">34.0dip</dimen>
+    <dimen name="space_35">35.0dip</dimen>
+    <dimen name="space_36">36.0dip</dimen>
+    <dimen name="space_37">37.0dip</dimen>
+    <dimen name="space_38">38.0dip</dimen>
+    <dimen name="space_39">39.0dip</dimen>
+    <dimen name="space_40">40.0dip</dimen>
+    <dimen name="space_45">45.0dip</dimen>
+    <dimen name="space_46">46.0dip</dimen>
+    <dimen name="space_47">47.0dip</dimen>
+    <dimen name="space_48">48.0dip</dimen>
+    <dimen name="space_49">49.0dip</dimen>
+    <dimen name="space_50">50.0dip</dimen>
+    <dimen name="space_51">51.0dip</dimen>
+    <dimen name="space_52">52.0dip</dimen>
+    <dimen name="space_53">53.0dip</dimen>
+    <dimen name="space_54">54.0dip</dimen>
+    <dimen name="space_55">55.0dip</dimen>
+    <dimen name="space_56">56.0dip</dimen>
+    <dimen name="space_57">57.0dip</dimen>
+    <dimen name="space_58">58.0dip</dimen>
+    <dimen name="space_59">59.0dip</dimen>
+    <dimen name="space_60">60.0dip</dimen>
+    <dimen name="space_65">65.0dip</dimen>
+    <dimen name="space_70">70.0dip</dimen>
+    <dimen name="space_80">80.0dip</dimen>
+    <dimen name="space_100">100.0dip</dimen>
+    <dimen name="space_120">120.0dip</dimen>
+    <dimen name="space_150">150.0dip</dimen>
+    <dimen name="space_160">160.0dip</dimen>
+    <dimen name="space_180">180.0dip</dimen>
+    <dimen name="space_200">200.0dip</dimen>
+    <dimen name="space_210">210.0dip</dimen>
+    <dimen name="space_300">300.0dip</dimen>
+    <dimen name="pop_text_size">14sp</dimen>
+    <dimen name="pop_title_size">18sp</dimen>
+
+</resources>

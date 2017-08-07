@@ -1,0 +1,71 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'maven'
+
+def projectName = project.getName();
+
+android {
+    compileSdkVersion Integer.parseInt(COMPILE_SDK_VERSION)
+    buildToolsVersion BUILDTOOLS_VERSION
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.javaVersion
+        targetCompatibility rootProject.ext.javaVersion
+    }
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(DB_VERSION)
+        versionName DB_VERSION_NAME
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    greendao {
+        schemaVersion Integer.parseInt(SCHEMA_VERSION)
+        daoPackage 'com.gavel.db.generated'
+        targetGenDir 'src/main/java/'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+
+    compile "org.greenrobot:greendao:$rootProject.greendaoVersion"
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: MAVEN_REPO_URL) {
+                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+            }
+            pom.project {
+                version DB_VERSION_NAME
+                artifactId projectName
+                groupId GROUP_ID
+                packaging TYPE
+                description DESCRIPTION
+            }
+        }
+    }
+}
+
+artifacts {
+    archives file(projectName + ".aar")
+}

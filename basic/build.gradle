@@ -1,0 +1,66 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+def projectName = project.getName();
+
+android {
+    compileSdkVersion Integer.parseInt(COMPILE_SDK_VERSION)
+    buildToolsVersion BUILDTOOLS_VERSION
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.javaVersion
+        targetCompatibility rootProject.ext.javaVersion
+    }
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(BASIC_VERSION)
+        versionName BASIC_VERSION_NAME
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions{
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile "org.projectlombok:lombok:$rootProject.lombokVersion"
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: MAVEN_REPO_URL) {
+                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+            }
+            pom.project {
+                version BASIC_VERSION_NAME
+                artifactId projectName
+                groupId GROUP_ID
+                packaging TYPE
+                description DESCRIPTION
+            }
+        }
+    }
+}
+
+artifacts {
+    archives file(projectName + ".aar")
+}
+

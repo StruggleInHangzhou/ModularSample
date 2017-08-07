@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">core</string>
+
+    <string name="core_load">加载中...</string>
+    <string name="core_loading">数据加载中...</string>
+    <string name="core_details">详情</string>
+    <string name="core_down_state">正在下载：%s</string>
+
+</resources>

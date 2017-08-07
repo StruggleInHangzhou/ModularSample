@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion Integer.parseInt(COMPILE_SDK_VERSION)
+    buildToolsVersion BUILDTOOLS_VERSION
+
+    configurations.all {
+        resolutionStrategy.force "com.google.code.findbugs:jsr305:$rootProject.jsr305Version"
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.javaVersion
+        targetCompatibility rootProject.ext.javaVersion
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    defaultConfig {
+        applicationId "com.gavel.main"
+        minSdkVersion Integer.parseInt(MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(APP_VERSION)
+        versionName APP_VERSION_NAME
+        multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        lintOptions {
+            abortOnError false
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+afterEvaluate {
+    tasks.matching {
+        it.name.startsWith('dex')
+    }.each { dx ->
+        if (dx.additionalParameters == null) {
+            dx.additionalParameters = []
+        }
+        dx.additionalParameters += '--multi-dex'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    if (coreRelease.toBoolean()) {
+        compile "com.gavel:core:$CORE_VERSION_NAME"
+    } else {
+        compile project(':core')
+    }
+
+    if (authRelease.toBoolean()) {
+        compile "com.gavel:auth:$AUTH_VERSION_NAME"
+    } else {
+        compile project(':auth')
+    }
+
+}
