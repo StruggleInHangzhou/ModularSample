@@ -6,4 +6,10 @@
     <string name="core_details">详情</string>
     <string name="core_down_state">正在下载：%s</string>
 
+    <string name="core_error_not_know">未知错误</string>
+    <string name="core_error_http">网络错误</string>
+    <string name="core_error_socket_time_out">连接超时</string>
+    <string name="core_error_not_connect">未能连接到服务器</string>
+    <string name="core_error_check_http">请确认是否已打开网络</string>
+
 </resources>

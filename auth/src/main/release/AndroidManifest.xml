@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
 
-        <activity android:name="com.gavel.auth.WelcomeActivity">
+        <activity android:name="com.gavel.auth.ui.activity.welcome.WelComeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

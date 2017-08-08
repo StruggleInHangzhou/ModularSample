@@ -9,7 +9,7 @@ import com.gavel.core.other.Config;
  */
 public class HttpUtils
 {
-    public static String getApiServiceUrl()
+    public static String getApiServer()
     {
         return Config.BASE_URL;
     }
