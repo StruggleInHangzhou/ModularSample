@@ -1,3 +1,4 @@
+**前言**
 
 项目越做越大，每次编译的时间越来越长，体验特别不好，在加上协同开发的时候，项目管理问题，因此开始了我的Android项目的模块化开发之旅。
 
@@ -231,6 +232,12 @@ dependencies {
         compile project(':auth')
     }
 
+    if (mainRelease.toBoolean()) {
+        compile "com.gavel:main:$MAIN_VERSION_NAME"
+    } else {
+        compile project(':main')
+    }
+
 }
 
 ```
@@ -239,6 +246,9 @@ dependencies {
 ```
 if (!isModule.toBoolean()) {
     include ':app'
+}
+if (!mainRelease.toBoolean()) {
+    include ':main'
 }
 if (!authRelease.toBoolean()) {
     include ':auth'
@@ -262,3 +272,4 @@ app模块是主体模块，模块化开发的时候不需要加载进项目工�
 
 *  修改gradle.properties中的isModule要能正常切换application和library。基本就算完事了，配置还是比较简单的。
 *  模块化难的是对于业务的解耦。一个功能是作为一个基本组件还是作为一个上层模块。功能细分到什么程度都是很讲究的。
+* [项目github地址](https://github.com/StruggleInHangzhou/ModularSample)
