@@ -37,6 +37,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+// 项目架包版本控制
 ext {
     javaVersion = JavaVersion.VERSION_1_8
 
