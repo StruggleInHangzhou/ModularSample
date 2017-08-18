@@ -1,4 +1,4 @@
-package com.gavel.main;
+package com.gavel.app;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,6 +28,18 @@ public class RouterActivity extends AppCompatActivity
             public void onLost(Postcard postcard)
             {
                 finish();
+            }
+
+            @Override
+            public void onArrival(Postcard postcard)
+            {
+
+            }
+
+            @Override
+            public void onInterrupt(Postcard postcard)
+            {
+
             }
 
         });

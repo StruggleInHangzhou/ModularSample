@@ -1,7 +1,7 @@
 if (!isModule.toBoolean()) {
     include ':app'
 }
-if (!authRelease.toBoolean()) {
+if (!mainRelease.toBoolean()) {
     include ':main'
 }
 if (!authRelease.toBoolean()) {

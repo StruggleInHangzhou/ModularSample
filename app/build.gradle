@@ -81,4 +81,10 @@ dependencies {
         compile project(':auth')
     }
 
+    if (mainRelease.toBoolean()) {
+        compile "com.gavel:main:$MAIN_VERSION_NAME"
+    } else {
+        compile project(':main')
+    }
+
 }

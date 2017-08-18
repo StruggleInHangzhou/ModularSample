@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF6F2A</color>
-    <color name="colorPrimaryDark">#FF6F2A</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="core_colorPrimary">#FF6F2A</color>
+    <color name="core_colorPrimaryDark">#FF6F2A</color>
+    <color name="core_colorAccent">#FFFFFF</color>
 
     <color name="progresscolor">#00966B</color>
     <color name="white">#FFFFFF</color><!--白色 -->

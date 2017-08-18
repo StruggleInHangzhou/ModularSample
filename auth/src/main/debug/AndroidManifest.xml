@@ -35,7 +35,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AuthTheme">
+        android:theme="@style/CoreTheme">
         <activity android:name="com.gavel.auth.ui.activity.welcome.WelComeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

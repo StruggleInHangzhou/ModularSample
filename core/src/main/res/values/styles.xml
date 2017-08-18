@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CoreTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/core_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/core_colorPrimaryDark</item>
+        <item name="colorAccent">@color/lightsalmon</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="android:windowBackground">@color/core_colorAccent</item>
+    </style>
+</resources>

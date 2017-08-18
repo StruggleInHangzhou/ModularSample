@@ -94,6 +94,5 @@ public class WelComeActivity extends BaseActivity<WelComePresenter> implements W
     {
         ARouter.getInstance().build(PathConfig.MAIN_HOME)
                 .navigation();
-        finish();
     }
 }

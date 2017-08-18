@@ -1,6 +1,7 @@
-package com.gavel.main;
+package com.gavel.app;
 
 import com.gavel.core.CoreApplication;
+import com.gavel.main.BuildConfig;
 
 /**
  * Created by jiahua on 17-2-22.
