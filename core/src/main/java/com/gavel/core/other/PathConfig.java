@@ -13,7 +13,7 @@ public class PathConfig
 
     /*************************************main*************************************************/
 
-    public static final String MAIN_MAIN = "/main/main";
+    public static final String MAIN_HOME = "/main/home";
 
 }
 

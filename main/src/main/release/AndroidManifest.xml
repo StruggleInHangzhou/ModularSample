@@ -8,7 +8,7 @@
         android:supportsRtl="true">
 
         <activity
-            android:name="com.gavel.main.MainActivity"
+            android:name="com.gavel.main.HomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait">
         </activity>

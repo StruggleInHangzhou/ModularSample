@@ -92,7 +92,7 @@ public class WelComeActivity extends BaseActivity<WelComePresenter> implements W
 
     private void action2main()
     {
-        ARouter.getInstance().build(PathConfig.MAIN_MAIN)
+        ARouter.getInstance().build(PathConfig.MAIN_HOME)
                 .navigation();
         finish();
     }

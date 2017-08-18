@@ -17,7 +17,7 @@ public class DebugLauncherActiviy extends AppCompatActivity
 
     private void action2next()
     {
-        ARouter.getInstance().build(PathConfig.MAIN_MAIN)
+        ARouter.getInstance().build(PathConfig.MAIN_HOME)
                 .navigation();
         finish();
     }

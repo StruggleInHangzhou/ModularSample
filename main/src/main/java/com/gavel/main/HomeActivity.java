@@ -8,19 +8,19 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.gavel.core.other.PathConfig;
 import com.gavel.main.base.BaseActivity;
-import com.gavel.main.databinding.MainActivityMainBinding;
-import com.gavel.main.ui.activity.main.MainContract;
-import com.gavel.main.ui.activity.main.MainPresenter;
+import com.gavel.main.databinding.MainActivityHomeBinding;
+import com.gavel.main.ui.activity.home.HomeContract;
+import com.gavel.main.ui.activity.home.HomePresenter;
 
 /**
  * @author jiahua
  * @Description: $description
- * @date 2017/08/18
+ * @date 2017/08/19
  */
-@Route(path = PathConfig.MAIN_MAIN)
-public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.IView
+@Route(path = PathConfig.MAIN_HOME)
+public class HomeActivity extends BaseActivity<HomePresenter> implements HomeContract.IView
 {
-    private MainActivityMainBinding mBinding;
+    private MainActivityHomeBinding mBinding;
 
     @Override
     protected void initInject()
@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected View loadContentView()
     {
-        mBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.main_activity_main, null, false);
+        mBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.main_activity_home, null, false);
         return mBinding.getRoot();
     }
 
