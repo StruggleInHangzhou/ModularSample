@@ -2,6 +2,9 @@ if (!isModule.toBoolean()) {
     include ':app'
 }
 if (!authRelease.toBoolean()) {
+    include ':main'
+}
+if (!authRelease.toBoolean()) {
     include ':auth'
 }
 if (!coreRelease.toBoolean()) {

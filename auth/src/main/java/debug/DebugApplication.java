@@ -8,7 +8,7 @@ import com.gavel.core.CoreApplication;
  * Description：
  */
 
-public class AuthApplication extends CoreApplication
+public class DebugApplication extends CoreApplication
 {
 
     @Override
