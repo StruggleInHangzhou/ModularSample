@@ -1,5 +1,8 @@
 package com.gavel.http.entity;
 
+import com.gavel.http.modify.ListTypeAdapterFactory;
+import com.google.gson.annotations.JsonAdapter;
+
 /**
  * Created by jhhuang on 2016/9/19.
  * QQ:781913268
@@ -9,6 +12,8 @@ public class CommonResponse<T>
 {
     private int errorCode;
     private String errorMessage;
+
+    @JsonAdapter(ListTypeAdapterFactory.class)
     private T data;
 
     public int getErrorCode()

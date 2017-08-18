@@ -59,14 +59,13 @@ dependencies {
 
     compile "com.alibaba:arouter-api:$rootProject.arouterApiVersion"
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerCompilerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerAndroidProcessorVersion"
 
     compile "com.orhanobut:logger:$rootProject.loggerVersion"
+
     compile "com.google.dagger:dagger:$rootProject.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerCompilerVersion"
     compile "com.google.dagger:dagger-android:$rootProject.daggerAndroidVersion"
     compile "com.google.dagger:dagger-android-support:$rootProject.daggerAndroidSupportVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerCompilerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerAndroidProcessorVersion"
 
     compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"

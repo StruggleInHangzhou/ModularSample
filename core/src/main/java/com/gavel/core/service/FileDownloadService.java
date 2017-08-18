@@ -6,7 +6,6 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Binder;
 import android.os.Environment;
 import android.os.Handler;
@@ -14,6 +13,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.widget.RemoteViews;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.gavel.core.R;
 
 import java.io.File;
@@ -33,7 +33,7 @@ public class FileDownloadService extends Service
     public final static String DEFAULT_SAVE_FILE_PATH = Environment
             .getExternalStorageDirectory()
             + File.separator
-            + "loan"
+            + AppUtils.getAppName()
             + File.separator
             + "download"
             + File.separator;
@@ -235,14 +235,8 @@ public class FileDownloadService extends Service
 
     private void installAPK(Context context, File file)
     {
-        if (file == null || !file.exists())
-            return;
-        Intent intent = new Intent();
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file),
-                "application/vnd.android.package-archive");
-        context.startActivity(intent);
+        String authorities = AppUtils.getAppPackageName() + ".provider";
+        AppUtils.installApp(file, authorities);
     }
 
     private Runnable mdownApkRunnable = new Runnable()

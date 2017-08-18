@@ -41,8 +41,8 @@ task clean(type: Delete) {
 ext {
     javaVersion = JavaVersion.VERSION_1_8
 
-    arouterApiVersion = "1.1.0"
-    arouterCompilerVersion = "1.1.1"
+    arouterApiVersion = "1.2.2"
+    arouterCompilerVersion = "1.1.3"
     multidexVersion = "1.0.1"
     leakcanaryVersion = "1.5.1"
     jsr305Version = "1.3.9"

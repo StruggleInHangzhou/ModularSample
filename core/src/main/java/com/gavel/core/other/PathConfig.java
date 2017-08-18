@@ -11,5 +11,9 @@ public class PathConfig
 
     public static final String AUTH_WELCOME = "/auth/welcome";
 
+    /*************************************main*************************************************/
+
+    public static final String MAIN_MAIN = "/main/main";
+
 }
 
