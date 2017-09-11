@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -20,15 +21,16 @@ import retrofit2.http.POST;
 public interface ApiService
 {
     @FormUrlEncoded
-    @POST("modular/auth/register")
+    @POST("auth/register")
     Observable<CommonResponse<String>> register(@FieldMap Map<String, String> params);
 
     @FormUrlEncoded
-    @POST("modular/auth/app/login")
+    @POST("auth/app/login")
     Observable<CommonResponse<String>> appLogin(@FieldMap Map<String, String> params);
 
+    @FormUrlEncoded
     @POST("auth/test/empty")
-    Observable<CommonResponse<String>> testEmpty();
+    Observable<CommonResponse<String>> testEmpty(@Field("mobile") String param);
 
     @POST("auth/test/empty/list")
     Observable<CommonResponse<List<UserDTO>>> testEmptyList();

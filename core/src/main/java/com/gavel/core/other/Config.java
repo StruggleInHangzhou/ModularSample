@@ -10,9 +10,9 @@ public class Config
     /**
      * 服务器地址
      */
-//    public static final String BASE_URL = "http://47.93.5.18:10000/";
+    public static final String BASE_URL = "http://47.93.5.18:10000/";
 
-    public static final String BASE_URL = "http://192.168.31.159:8080/";
+//    public static final String BASE_URL = "http://192.168.31.159:8080/";
 
     /**
      * 点击防抖动  单位毫秒

@@ -28,7 +28,7 @@ public class WelComeMoudle implements WelComeContract.IMoudle
     @Override
     public Observable<CommonResponse<String>> testEmpty()
     {
-        return ClientManager.getClient(HttpUtils.getApiServer()).create(ApiService.class).testEmpty();
+        return ClientManager.getClient(HttpUtils.getApiServer()).create(ApiService.class).testEmpty("15180009216");
     }
 
     @Override

@@ -121,6 +121,9 @@ public class LoggerInterceptor implements Interceptor
                     if (isText(mediaType))
                     {
                         Log.e(tag, "requestBody's content : " + bodyToString(request));
+                    } else if (isEncoded(mediaType))
+                    {
+                        Log.e(tag, "requestBody's content : " + bodyToString(request));
                     } else
                     {
                         Log.e(tag, "requestBody's content : " + " maybe [file part] , too large too print , ignored!");
@@ -132,6 +135,11 @@ public class LoggerInterceptor implements Interceptor
         {
 //            e.printStackTrace();
         }
+    }
+
+    private boolean isEncoded(MediaType mediaType)
+    {
+        return mediaType.subtype().equals("x-www-form-urlencoded");
     }
 
     private boolean isText(MediaType mediaType)
