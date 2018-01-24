@@ -1,0 +1,25 @@
+apply plugin: 'maven'
+
+def projectName = project.getName()
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: MAVEN_REPO_URL) {
+                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+            }
+            pom.project {
+                version HTTP_VERSION_NAME
+                artifactId projectName
+                groupId GROUP_ID
+                packaging TYPE
+                description DESCRIPTION
+            }
+        }
+    }
+}
+
+artifacts {
+    archives file(projectName + ".aar")
+}

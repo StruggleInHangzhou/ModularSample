@@ -1,8 +1,6 @@
 package com.gavel.core.component;
 
 
-import com.gavel.http.constant.ResponseCode;
-import com.gavel.http.ex.ApiException;
 import com.gavel.http.ex.ResultException;
 
 import java.util.concurrent.TimeUnit;
@@ -49,19 +47,19 @@ public class RetryWithDelayFunc1 implements Function<Observable<? extends Throwa
         return error.flatMap(throwable ->
         {
 
-            if (throwable instanceof ApiException)
-            {
-                ResponseCode responseCode = ((ApiException) throwable).getResponseCode();
-                switch (responseCode)
-                {
-                    case AUTH_FAILURE:
-                        RxBus.getDefault().post(new FromApiEvent(ResponseCode.AUTH_FAILURE));
-                        return Observable.error(throwable);
-                    default:
-                        return Observable.error(throwable);
-                }
-
-            }
+//            if (throwable instanceof ApiException)
+//            {
+//                ResponseCode responseCode = ((ApiException) throwable).getResponseCode();
+//                switch (responseCode)
+//                {
+//                    case AUTH_FAILURE:
+//                        RxBus.getDefault().post(new FromApiEvent(ResponseCode.AUTH_FAILURE));
+//                        return Observable.error(throwable);
+//                    default:
+//                        return Observable.error(throwable);
+//                }
+//
+//            }
 
             if (throwable instanceof ResultException)
             {

@@ -34,12 +34,12 @@ public class RetorfitClient
 
     private Retrofit retrofit;
 
-    public RetorfitClient()
-    {
-        this(URL_BASE);
-    }
+//    public RetorfitClient()
+//    {
+//        this(URL_BASE);
+//    }
 
-    public RetorfitClient(String url)
+    RetorfitClient(String url)
     {
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder()

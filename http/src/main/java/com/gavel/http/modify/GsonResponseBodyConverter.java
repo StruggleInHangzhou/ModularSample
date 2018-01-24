@@ -1,9 +1,9 @@
 package com.gavel.http.modify;
 
-import com.gavel.http.constant.ResponseCode;
+import android.support.annotation.NonNull;
+
 import com.gavel.http.entity.ErrResponse;
 import com.gavel.http.entity.ResultResponse;
-import com.gavel.http.ex.ApiException;
 import com.gavel.http.ex.ResultException;
 import com.google.gson.Gson;
 
@@ -30,7 +30,7 @@ public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T>
     }
 
     @Override
-    public T convert(ResponseBody value) throws IOException
+    public T convert(@NonNull ResponseBody value) throws IOException
     {
         String response = value.string();
         try
@@ -40,12 +40,9 @@ public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T>
             if (resultResponse.getErrorCode() == -1)
             {
                 return gson.fromJson(response, type);
-            } else if (resultResponse.getErrorCode() == ResponseCode.SUCCESS.getValue())
+            } else if (resultResponse.getErrorCode() == 200)
             {
                 return gson.fromJson(response, type);
-            } else if (resultResponse.getErrorCode() == ResponseCode.AUTH_FAILURE.getValue())
-            {
-                throw new ApiException(ResponseCode.AUTH_FAILURE);
             } else
             {
                 //ErrResponse 将msg解析为异常消息文本

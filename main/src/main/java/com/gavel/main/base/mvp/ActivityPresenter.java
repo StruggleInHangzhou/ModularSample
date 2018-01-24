@@ -4,7 +4,6 @@ package com.gavel.main.base.mvp;
 import android.support.annotation.NonNull;
 
 import com.gavel.core.component.RetryWithDelayFunc1;
-import com.gavel.http.ex.ApiException;
 import com.gavel.http.ex.ResultException;
 import com.gavel.http.ex.ToastException;
 import com.gavel.main.R;
@@ -109,9 +108,6 @@ public class ActivityPresenter<V extends ActivityView, M extends Moudle> extends
             } else if (e instanceof SocketTimeoutException)
             {
                 onSocketTimeoutException(((SocketTimeoutException) e));
-            } else if (e instanceof ApiException)
-            {
-                onApiException(((ApiException) e));
             } else if (e instanceof ConnectException)
             {
                 onConnectException(((ConnectException) e));
@@ -124,10 +120,6 @@ public class ActivityPresenter<V extends ActivityView, M extends Moudle> extends
             }
         }
 
-        public void onApiException(ApiException e)
-        {
-
-        }
 
         public void onUnknownHostException(UnknownHostException e)
         {

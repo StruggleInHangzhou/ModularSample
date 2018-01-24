@@ -28,8 +28,6 @@ public class ClientManager
                 appClient = new RetorfitClient(url);
             } catch (Exception e)
             {
-                appClient = new RetorfitClient();
-                url = RetorfitClient.URL_BASE;
                 e.printStackTrace();
             }
             clientMap.put(url, appClient);
