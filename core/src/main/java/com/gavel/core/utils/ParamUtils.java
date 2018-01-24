@@ -6,8 +6,6 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by jhhuang on 2017/3/19.
@@ -18,42 +16,33 @@ public class ParamUtils
 {
     public static <T> String createByType(T t)
     {
-        String param = "";
-        Field[] fields = t.getClass().getDeclaredFields();
-        for (Field field : fields)
-        {
-            try
-            {
-                field.setAccessible(true);
-                param += field.getName() + "=" + field.get(t).toString() + "&";
-
-            } catch (Exception e)
-            {
-            }
-        }
-        if (param.length() > 0)
-        {
-            param = param.substring(0, param.length() - 1);
-        }
-        return param;
+        return createByMap(objectToMap(t));
     }
 
     public static <T> Map<String, String> objectToMap(T t)
     {
         Map<String, String> map = new HashMap<>();
-        Field[] fields = t.getClass().getDeclaredFields();
-        for (Field field : fields)
+        Class clazz = t.getClass();
+        while (null != clazz && !clazz.getName().toLowerCase().equals("java.lang.object"))
         {
-            try
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields)
             {
-                field.setAccessible(true);
-                if (!TextUtils.isEmpty(field.get(t).toString()))
+                try
                 {
-                    map.put(field.getName(), field.get(t).toString());
+                    field.setAccessible(true);
+                    if (!TextUtils.isEmpty(field.get(t).toString()))
+                    {
+                        map.put(field.getName(), field.get(t).toString());
+                    } else
+                    {
+                        map.put(field.getName(), "");
+                    }
+                } catch (Exception e)
+                {
                 }
-            } catch (Exception e)
-            {
             }
+            clazz = clazz.getSuperclass();
         }
         return map;
     }
@@ -73,33 +62,4 @@ public class ParamUtils
         return param;
     }
 
-    public static boolean isDataString(String data)
-    {
-        if (TextUtils.isEmpty(data))
-        {
-            return false;
-        }
-        String eL = "[0-9]{4}-[0-9]{2}-[0-9]{2}";
-        Pattern p = Pattern.compile(eL);
-        Matcher m = p.matcher(data);
-        return m.matches();
-    }
-
-    public static boolean verifyLoginPwd(String password)
-    {
-//        String eL = "^(?![0-9]+$)(?![a-zA-Z]+$)";
-        String eL = "^(?![^a-zA-Z]+$)(?!\\\\D+$).{6,20}$";
-        Pattern p = Pattern.compile(eL);
-        Matcher m = p.matcher(password);
-        return m.matches();
-    }
-
-    public static boolean verifyPayPwd(String password)
-    {
-//        String eL = "^(?![0-9]+$)(?![a-zA-Z]+$)";
-        String eL = "^(?![^a-zA-Z]+$)(?!\\\\D+$).{8,20}$";
-        Pattern p = Pattern.compile(eL);
-        Matcher m = p.matcher(password);
-        return m.matches();
-    }
 }

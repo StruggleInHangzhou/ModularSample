@@ -26,7 +26,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  */
 public class RetorfitClient
 {
-    public static final String URL_BASE = "http://192.168.2.131:8091/";
 
     private static Converter.Factory scalarsconverterfactory = ScalarsConverterFactory.create();
     private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
@@ -34,10 +33,6 @@ public class RetorfitClient
 
     private Retrofit retrofit;
 
-//    public RetorfitClient()
-//    {
-//        this(URL_BASE);
-//    }
 
     RetorfitClient(String url)
     {

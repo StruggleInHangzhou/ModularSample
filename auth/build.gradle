@@ -6,11 +6,10 @@ if (isModule.toBoolean()) {
 
 apply plugin: 'maven'
 
-def projectName = project.getName();
+def projectName = project.getName()
 
 android {
     compileSdkVersion Integer.parseInt(COMPILE_SDK_VERSION)
-    buildToolsVersion BUILDTOOLS_VERSION
 
     defaultConfig {
         minSdkVersion Integer.parseInt(MIN_SDK_VERSION)
@@ -22,6 +21,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: projectName]
+                includeCompileClasspath = true
             }
         }
 
@@ -98,18 +98,19 @@ artifacts {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 
     if (coreRelease.toBoolean()) {
-        compile "com.gavle:core:$CORE_VERSION_NAME"
+        api "com.gavle:core:$CORE_VERSION_NAME"
     } else {
-        compile project(':core')
+        api project(':core')
     }
-
+//noinspection GradleDependency
+    implementation "com.android.support:appcompat-v7:${SUPPORT_LIB_VERSION}"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerCompilerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerAndroidProcessorVersion"
 

@@ -1,7 +1,6 @@
 package com.gavel.auth.base;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
@@ -9,11 +8,10 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.ToastUtils;
 import com.gavel.auth.R;
 import com.gavel.auth.base.mvp.ActivityPresenter;
 import com.gavel.auth.base.mvp.ActivityView;
-import com.jiahuaandroid.basetools.utils.CUtils;
-import com.jiahuaandroid.basetools.utils.StatusBarUtils;
 import com.orhanobut.logger.Logger;
 
 
@@ -99,7 +97,7 @@ public abstract class BaseActivity<T extends ActivityPresenter> extends MvpActiv
     {
         if (!ifFullScreen())
         {
-            StatusBarUtils.setColor(this, Color.parseColor("#FF4800"));
+//            BarUtils.setStatusBarColor(this, Color.parseColor("#FF4800"));
         }
     }
 
@@ -154,13 +152,13 @@ public abstract class BaseActivity<T extends ActivityPresenter> extends MvpActiv
     @Override
     public void toast(String msg)
     {
-        mContext.runOnUiThread(() -> CUtils.showMsg(msg));
+        ToastUtils.showShort(msg);
     }
 
     @Override
     public void toast(int resId)
     {
-        mContext.runOnUiThread(() -> CUtils.showMsg(resId));
+        ToastUtils.showShort(resId);
     }
 
 }

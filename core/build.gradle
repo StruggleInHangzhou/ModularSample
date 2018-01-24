@@ -1,11 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
-def projectName = project.getName();
+def projectName = project.getName()
 
 android {
     compileSdkVersion Integer.parseInt(COMPILE_SDK_VERSION)
-    buildToolsVersion BUILDTOOLS_VERSION
 
     compileOptions {
         sourceCompatibility rootProject.ext.javaVersion
@@ -27,6 +26,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: projectName]
+                includeCompileClasspath = true
             }
         }
 
@@ -41,66 +41,65 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 
-    debugCompile "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanaryVersion"
-    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanaryVersion"
-    testCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanaryVersion"
-    compile "com.android.support:appcompat-v7:${SUPPORT_LIB_VERSION}"
-    compile "com.android.support:recyclerview-v7:${SUPPORT_LIB_VERSION}"
-    compile "com.android.support:cardview-v7:${SUPPORT_LIB_VERSION}"
-    compile "com.android.support:design:${SUPPORT_LIB_VERSION}"
-    compile "com.android.support.constraint:constraint-layout:${CONSTRAINT_LAYOUT}"
-    compile "com.android.support:multidex:$rootProject.multidexVersion"
-
-    compile "com.alibaba:arouter-api:$rootProject.arouterApiVersion"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanaryVersion"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanaryVersion"
+    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanaryVersion"
+    //noinspection GradleDependency
+    api "com.android.support:appcompat-v7:${SUPPORT_LIB_VERSION}"
+    api "com.android.support:recyclerview-v7:${SUPPORT_LIB_VERSION}"
+    api "com.android.support:cardview-v7:${SUPPORT_LIB_VERSION}"
+    api "com.android.support:design:${SUPPORT_LIB_VERSION}"
+    api "com.android.support.constraint:constraint-layout:${CONSTRAINT_LAYOUT}"
+    api "com.android.support:multidex:$rootProject.multidexVersion"
+    api "com.alibaba:arouter-api:$rootProject.arouterApiVersion"
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompilerVersion"
 
-    compile "com.orhanobut:logger:$rootProject.loggerVersion"
-
-    compile "com.google.dagger:dagger:$rootProject.daggerVersion"
-    compile "com.google.dagger:dagger-android:$rootProject.daggerAndroidVersion"
-    compile "com.google.dagger:dagger-android-support:$rootProject.daggerAndroidSupportVersion"
+    api "com.orhanobut:logger:$rootProject.loggerVersion"
+    api "com.google.dagger:dagger:$rootProject.daggerVersion"
+    api "com.google.dagger:dagger-android:$rootProject.daggerAndroidVersion"
+    api "com.google.dagger:dagger-android-support:$rootProject.daggerAndroidSupportVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerCompilerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerAndroidProcessorVersion"
 
-    compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
-    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid2Version"
-    compile "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxbinding2Version"
-    compile "com.jakewharton.rxbinding2:rxbinding-support-v4:$rootProject.rxbinding2SupportV4Version"
-    compile "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rootProject.rxbinding2AppcompatV7Version"
-    compile "com.jakewharton.rxbinding2:rxbinding-design:$rootProject.rxbinding2DesignVersion"
-    compile "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$rootProject.rxbinding2recyclerviewV7Version"
-    compile "com.jakewharton.rxrelay2:rxrelay:$rootProject.rxrelay2Version"
-    compile "com.trello.rxlifecycle2:rxlifecycle:$rootProject.rxlifecycle2Version"
-    compile "com.trello.rxlifecycle2:rxlifecycle-android:$rootProject.rxlifecycle2AndroidVersion"
-    compile "com.trello.rxlifecycle2:rxlifecycle-components:$rootProject.rxlifecycle2ComponentsVersion"
-    compile "com.tbruyelle.rxpermissions2:rxpermissions:$rootProject.rxpermissions2Version"
+    api "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    api "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid2Version"
+    api "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxbinding2Version"
+    api "com.jakewharton.rxbinding2:rxbinding-support-v4:$rootProject.rxbinding2SupportV4Version"
+    api "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rootProject.rxbinding2AppcompatV7Version"
+    api "com.jakewharton.rxbinding2:rxbinding-design:$rootProject.rxbinding2DesignVersion"
+    api "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$rootProject.rxbinding2recyclerviewV7Version"
+    api "com.jakewharton.rxrelay2:rxrelay:$rootProject.rxrelay2Version"
+    api "com.trello.rxlifecycle2:rxlifecycle:$rootProject.rxlifecycle2Version"
+    api "com.trello.rxlifecycle2:rxlifecycle-android:$rootProject.rxlifecycle2AndroidVersion"
+    api "com.trello.rxlifecycle2:rxlifecycle-components:$rootProject.rxlifecycle2ComponentsVersion"
+    api "com.tbruyelle.rxpermissions2:rxpermissions:$rootProject.rxpermissions2Version"
 
-    compile "com.blankj:utilcode:$rootProject.utilcodeVersion"
+    api "com.blankj:utilcode:$rootProject.utilcodeVersion"
 
-    compile "me.yokeyword:fragmentation:$rootProject.fragmentationVersion"
-    compile "me.yokeyword:fragmentation-swipeback:$rootProject.fragmentationSwipebackVersion"
+    api "me.yokeyword:fragmentation:$rootProject.fragmentationVersion"
+    api "me.yokeyword:fragmentation-swipeback:$rootProject.fragmentationSwipebackVersion"
 
 
     if (httpRelease.toBoolean()) {
-        compile "com.gavel:http:$HTTP_VERSION_NAME"
+        api "com.gavel:http:$HTTP_VERSION_NAME"
     } else {
-        compile project(':http')
+        api project(':http')
     }
     if (dbRelease.toBoolean()) {
-        compile "com.gavel:db:$DB_VERSION_NAME"
+        api "com.gavel:db:$DB_VERSION_NAME"
     } else {
-        compile project(':db')
+        api project(':db')
     }
     if (basicRelease.toBoolean()) {
-        compile "com.gavel:basic:$BASIC_VERSION_NAME"
+        api "com.gavel:basic:$BASIC_VERSION_NAME"
     } else {
-        compile project(':basic')
+        api project(':basic')
     }
 }
 

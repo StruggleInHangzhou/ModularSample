@@ -36,10 +36,6 @@ public class ClientManager
         return appClient;
     }
 
-    public static RetorfitClient getClient()
-    {
-        return getClient(RetorfitClient.URL_BASE);
-    }
 
     public static void registerClient(String url)
     {

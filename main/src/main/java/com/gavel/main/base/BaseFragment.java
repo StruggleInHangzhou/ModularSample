@@ -99,13 +99,13 @@ public abstract class BaseFragment<T extends FragmentPresenter> extends MvpFragm
     @Override
     public void toast(String msg)
     {
-        ToastUtils.showShortSafe(msg);
+        ToastUtils.showShort(msg);
     }
 
     @Override
     public void toast(int resId)
     {
-        ToastUtils.showShortSafe(resId);
+        ToastUtils.showShort(resId);
     }
 
     /**

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.gavel.core.component.IRxActivity;
-import com.jiahuaandroid.basetools.utils.ActivityCollector;
+import com.gavel.core.utils.ActivityCollector;
 
 
 /**

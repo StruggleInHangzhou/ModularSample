@@ -8,7 +8,6 @@ import com.blankj.utilcode.util.Utils;
 import com.gavel.core.di.component.AppComponent;
 import com.gavel.core.di.component.DaggerAppComponent;
 import com.gavel.core.di.moudle.AppModule;
-import com.jiahuaandroid.basetools.utils.CUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
@@ -27,16 +26,12 @@ public abstract class CoreApplication extends MultiDexApplication
     @Override
     public void onCreate()
     {
+        Utils.init(this);
+        initLog();
         super.onCreate();
         instance = this;
         CrashHandler.getInstance().init(instance);
-        //工具加载
-        CUtils.init(this);
-        Utils.init(this);
         ARouter.init(this);
-
-        initLog();
-
 
     }
 
